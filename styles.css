@@ -1,0 +1,74 @@
+*{
+  margin: 10;
+  padding: 0;
+}
+
+body{
+  background-color: rgb(81, 65, 65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  gap: 70px;
+  align-items: flex-end;
+  padding: 60px 40px;
+  border-radius: 10px;
+  background-color: rgb(234, 157, 15);
+  /* height: 500px; */
+  width: 900px;
+}
+
+.guess-section {
+ 
+  
+}
+
+.word-display{
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-display .letter{
+  width: 28px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 3px solid black;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.word-display .letter.guessed {
+  border-color: transparent;
+  margin: -40px 0 35px;
+}
+
+.hangman-img{
+  max-width: 270px;
+}
+
+.guess-section h4{
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.keyboard button {
+  width: calc(100% / 9 - 5px);
+  background-color: rgb(81, 65, 65);
+}
