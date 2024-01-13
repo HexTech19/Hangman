@@ -3,4 +3,4 @@ function clicked() {
   console.log(clickedButton[3].innerText);
 }
 
-clicked()
+clicked();
