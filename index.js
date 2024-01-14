@@ -26,4 +26,5 @@ for (let i = 97; i <= 122; i++) {
   button.addEventListener('click', e => inGame(e.target, String.fromCharCode(i)));
 }
 
+
 getRandomWord();
