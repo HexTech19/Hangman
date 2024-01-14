@@ -10,7 +10,6 @@ const getRandomWord = () => {
   wordDisplay.innerHTML = word.split('').map( () => ` <li class="letter"></li>`).join('');
 }
 
-
 const inGame = (button, clickedLetter) => {
   if (currentWord.includes(clickedLetter)) {
     console.log(clickedLetter, 'is in the word');
