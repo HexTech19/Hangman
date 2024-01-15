@@ -1,7 +1,12 @@
 const wordDisplay = document.querySelector('.word-display');
+const hangmanImg = document.querySelector('.hangman-img img');
 const keyboard = document.querySelector('.keyboard');
+const modal = document.querySelector('.failure');
 
-let currentWord;
+let currentWord, correctLetters = [], wrongGuessCount = 0;
+const maxGuesses = 6;
+
+
 const getRandomWord = () => {
   const {word, hint} = words[Math.floor(Math.random() * words.length)];
   console.log(word)
@@ -10,17 +15,34 @@ const getRandomWord = () => {
   wordDisplay.innerHTML = word.split('').map( () => ` <li class="letter"></li>`).join('');
 }
 
+const gameOver = (isVictory) => {
+    setTimeout(() => {
+      const modalText = isVictory ?  `You found the word:` : `The correct word was:`;
+      modal.querySelector('img').src = `./images/${isVictory ? 'victory' : 'lost'}.gif`;
+      modal.querySelector('h4').innerText = `${isVictory ? 'Congrats' : 'Game Over!'}`;
+      modal.querySelector('p').innerHTML = `${modalText} <b>${currentWord}</b>`;
+      modal.classList.add('show');
+    }, 300)
+}
+
 const inGame = (button, clickedLetter) => {
   if (currentWord.includes(clickedLetter)) {
     [...currentWord].forEach((letter, index) => {
       if (letter === clickedLetter) {
+        correctLetters.push(letter);
         wordDisplay.querySelectorAll('li')[index].innerText = letter;
         wordDisplay.querySelectorAll('li')[index].classList.add('guessed');
       }
     })
   } else {
-    console.log(clickedLetter, 'is not in the word');
+    wrongGuessCount++;
+    if (wrongGuessCount < 7) {
+      hangmanImg.src = `./images/hangman-${wrongGuessCount}.svg`
+    }
   }
+  button.disabled = true;
+  if (wrongGuessCount === maxGuesses) return gameOver(false);
+  if (correctLetters.length === currentWord.length) return gameOver(true);
 }
 
 //Creating buttons and adding Event listeners

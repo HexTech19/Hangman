@@ -4,7 +4,7 @@ const words = [
     hint: 'The best football club in England'
   },
   {
-    word: 'tenHaag',
+    word: 'tenhaag',
     hint: 'The best Manager club in England'
   },
   {
