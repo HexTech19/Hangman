@@ -1,22 +1,22 @@
 const words = [
   {
-    word: 'Arsenal',
+    word: 'arsenal',
     hint: 'The best football club in England'
   },
   {
-    word: 'TenHaag',
+    word: 'tenHaag',
     hint: 'The best Manager club in England'
   },
   {
-    word: 'Chelsea',
+    word: 'chelsea',
     hint: 'Yahoo Boys'
   },
   {
-    word: 'Aguerooo',
+    word: 'aguerooo',
     hint: 'Best moment in PL history'
   },
   {
-    word: 'Hazard',
+    word: 'hazard',
     hint: 'Danger'
   },
 ];

@@ -12,7 +12,12 @@ const getRandomWord = () => {
 
 const inGame = (button, clickedLetter) => {
   if (currentWord.includes(clickedLetter)) {
-    console.log(clickedLetter, 'is in the word');
+    [...currentWord].forEach((letter, index) => {
+      if (letter === clickedLetter) {
+        wordDisplay.querySelectorAll('li')[index].innerText = letter;
+        wordDisplay.querySelectorAll('li')[index].classList.add('guessed');
+      }
+    })
   } else {
     console.log(clickedLetter, 'is not in the word');
   }
