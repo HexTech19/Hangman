@@ -2,25 +2,34 @@ const wordDisplay = document.querySelector('.word-display');
 const hangmanImg = document.querySelector('.hangman-img img');
 const keyboard = document.querySelector('.keyboard');
 const modal = document.querySelector('.failure');
+const playAgainBtn = document.querySelector('.play-again');
 
-let currentWord, correctLetters = [], wrongGuessCount = 0;
+let currentWord, correctLetters, wrongGuessCount = 0;
 const maxGuesses = 6;
 
 
+const resetGame = () => {
+  correctLetters = []
+  wrongGuessCount = 0;
+  hangmanImg.src = `./images/hangman-${wrongGuessCount}.svg`;
+  keyboard.querySelectorAll('button').forEach(btn => btn.disabled = false);
+  modal.classList.remove('show');
+  wordDisplay.innerHTML = currentWord.split('').map( () => ` <li class="letter"></li>`).join('');
+}
+
 const getRandomWord = () => {
   const {word, hint} = words[Math.floor(Math.random() * words.length)];
-  console.log(word)
   currentWord = word;
-  document.querySelector('.hint-text').innerText = hint;
-  wordDisplay.innerHTML = word.split('').map( () => ` <li class="letter"></li>`).join('');
-}
+  document.querySelector('.hint-text').innerText = `Hint: ${hint}`;
+  resetGame();
+ }
 
 const gameOver = (isVictory) => {
     setTimeout(() => {
       const modalText = isVictory ?  `You found the word:` : `The correct word was:`;
       modal.querySelector('img').src = `./images/${isVictory ? 'victory' : 'lost'}.gif`;
       modal.querySelector('h4').innerText = `${isVictory ? 'Congrats' : 'Game Over!'}`;
-      modal.querySelector('p').innerHTML = `${modalText} <b>${currentWord}</b>`;
+      modal.querySelector('p').innerHTML = `${modalText} <b>${currentWord.toUpperCase()}</b>`;
       modal.classList.add('show');
     }, 300)
 }
@@ -55,3 +64,4 @@ for (let i = 97; i <= 122; i++) {
 
 
 getRandomWord();
+playAgainBtn.addEventListener('click', getRandomWord);
