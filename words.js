@@ -78,5 +78,9 @@ const words = [
   {
     word: 'axiom',
     hint: 'English Word'
+  },
+  {
+    word: 'python',
+    hint: 'Animal'
   }
 ];
